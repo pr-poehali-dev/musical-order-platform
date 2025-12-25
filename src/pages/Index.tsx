@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Icon from '@/components/ui/icon';
+import { CONTACTS } from '@/config/contacts';
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -295,39 +296,56 @@ const Index = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-colors">
+            <a 
+              href={`mailto:${CONTACTS.email}`}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 block"
+            >
               <Icon name="Mail" className="mx-auto mb-4" size={40} />
               <p className="font-semibold text-lg mb-2">Email</p>
-              <a href="mailto:info@songorder.ru" className="hover:underline">info@songorder.ru</a>
-            </div>
+              <p className="hover:underline">{CONTACTS.email}</p>
+            </a>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-colors">
+            <a 
+              href={`tel:${CONTACTS.phone.replace(/\D/g, '')}`}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 block"
+            >
               <Icon name="Phone" className="mx-auto mb-4" size={40} />
               <p className="font-semibold text-lg mb-2">Телефон</p>
-              <a href="tel:+79991234567" className="hover:underline">+7 (999) 123-45-67</a>
-            </div>
+              <p className="hover:underline">{CONTACTS.phone}</p>
+            </a>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-colors">
+            <a 
+              href={CONTACTS.telegramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 block"
+            >
               <Icon name="MessageCircle" className="mx-auto mb-4" size={40} />
               <p className="font-semibold text-lg mb-2">Telegram</p>
-              <a href="https://t.me/songorder" className="hover:underline">@songorder</a>
-            </div>
+              <p className="hover:underline">{CONTACTS.telegram}</p>
+            </a>
           </div>
 
-          <div className="flex gap-6 justify-center">
+          <div className="flex gap-6 justify-center flex-wrap">
             <Button 
               size="lg" 
-              className="bg-white text-primary hover:bg-white/90 rounded-full px-6"
+              className="bg-white text-primary hover:bg-white/90 rounded-full px-6 hover:scale-105 transition-transform"
+              asChild
             >
-              <Icon name="Instagram" className="mr-2" />
-              Instagram
+              <a href={`https://instagram.com/${CONTACTS.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">
+                <Icon name="Instagram" className="mr-2" />
+                Instagram
+              </a>
             </Button>
             <Button 
               size="lg" 
-              className="bg-white text-primary hover:bg-white/90 rounded-full px-6"
+              className="bg-white text-primary hover:bg-white/90 rounded-full px-6 hover:scale-105 transition-transform"
+              asChild
             >
-              <Icon name="Youtube" className="mr-2" />
-              YouTube
+              <a href={`https://${CONTACTS.vk}`} target="_blank" rel="noopener noreferrer">
+                <Icon name="Share2" className="mr-2" />
+                VK
+              </a>
             </Button>
           </div>
         </div>
